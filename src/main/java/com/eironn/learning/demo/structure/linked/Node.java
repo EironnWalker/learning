@@ -1,4 +1,4 @@
-package com.eironn.learning.demo.structure.linked.test;
+package com.eironn.learning.demo.structure.linked;
 
 public class Node {
 

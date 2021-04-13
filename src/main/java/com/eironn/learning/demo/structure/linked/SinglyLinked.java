@@ -1,4 +1,7 @@
-package com.eironn.learning.demo.structure.linked.test;
+package com.eironn.learning.demo.structure.linked;
+
+import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  * 实现
@@ -16,8 +19,8 @@ public class SinglyLinked implements Linked{
 
     /**
      * 获取链表第p个节点
-     * @param p
-     * @return
+     * @param p 节点下标
+     * @return 返回节点
      */
     @Override
     public Node get(int p) {
@@ -41,7 +44,7 @@ public class SinglyLinked implements Linked{
 
     /**
      * 在head头部插入
-     * @param data
+     * @param data 节点
      */
     public void headInsert(Object data) {
         // 声明一个新的节点来代表即将作为head的节点
@@ -58,8 +61,8 @@ public class SinglyLinked implements Linked{
 
     /**
      * 在指定的p节点插入
-     * @param p
-     * @param data
+     * @param p 下标
+     * @param data 数据
      */
     @Override
     public void insert(int p, Object data) {
@@ -156,5 +159,32 @@ public class SinglyLinked implements Linked{
         list.delete(1);
         list.print();
         System.out.println("长度：" + list.size());
+        list.reverse1();
+        list.print();
     }
+
+    /**
+     * 逆序一个单向链表
+     * 第一种方案，使用栈
+     */
+    public void reverse1() {
+        if (null == head || null == head.next) {
+            // 没有节点或者只有一个节点
+            return;
+        }
+        Node current = head;
+        Deque<Node> stack = new LinkedList<>();
+
+        while (null != current) {
+            stack.push(current);
+            current = current.next;
+        }
+        head = stack.pop();
+        current = head;
+        while (!stack.isEmpty()) {
+            current.next = stack.pop();
+            current = current.next;
+        }
+    }
+
 }
