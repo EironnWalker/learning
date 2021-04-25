@@ -1,6 +1,6 @@
 package com.eironn.learning.demo.structure.linked;
 
-public class Node {
+public class ListNode {
 
     /**
      * 数据
@@ -10,5 +10,5 @@ public class Node {
     /**
      * 指向下一节点
      */
-    Node next;
+    ListNode next;
 }
