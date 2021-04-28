@@ -1,7 +1,5 @@
 package com.eironn.learning.demo.structure.linked;
 
-import java.util.Deque;
-import java.util.LinkedList;
 import java.util.Stack;
 
 /**
@@ -15,7 +13,7 @@ public class Test {
         // 必须要接收返回值，方法中声明的变量，无法链到head下返回。
 //        ListNode reverseHead = reverseByStack(head);
 //        ListNode reverseHead = reverseByRecursion(head);
-        ListNode reverseHead = reverseByStack2(head);
+        ListNode reverseHead = reverseByStack(head);
         printNode(reverseHead);
     }
 
@@ -71,28 +69,6 @@ public class Test {
         while (!stack.isEmpty()) {
             currentNode.next = stack.pop();
             currentNode = currentNode.next;
-        }
-        return head;
-    }
-
-    public static ListNode reverseByStack2(ListNode head) {
-        if (null == head || null == head.next) {
-            return head;
-        }
-        Deque<ListNode> stack = new LinkedList<>();
-        ListNode current = head;
-        while (null != current) {
-            ListNode temp = current.next;
-            current.next = null;
-            stack.push(current);
-            current = temp;
-        }
-        // 把stack数据写入到新链表
-        head = stack.pop();
-        current = head;
-        while (!stack.isEmpty()) {
-            current.next = stack.pop();
-            current = current.next;
         }
         return head;
     }
